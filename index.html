@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Port Scanner</title>
+</head>
+<body>
+    <h2>Web-Based IP & Port Scanner</h2>
+    <form method="post">
+        <label for="target">Enter IP/Domain:</label>
+        <input type="text" id="target" name="target" required>
+        <br><br>
+        <label for="start_port">Start Port:</label>
+        <input type="number" id="start_port" name="start_port" value="1" required>
+        <br><br>
+        <label for="end_port">End Port:</label>
+        <input type="number" id="end_port" name="end_port" value="1000" required>
+        <br><br>
+        <button type="submit">Scan</button>
+    </form>
+    
+    {% if open_ports is not none %}
+    <h3>Scan Results for {{ target }}</h3>
+    {% if open_ports %}
+        <p>Open Ports: {{ open_ports }}</p>
+    {% else %}
+        <p>No open ports found in the selected range.</p>
+    {% endif %}
+    {% endif %}
+</body>
+</html>
